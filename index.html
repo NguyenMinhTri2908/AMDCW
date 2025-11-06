@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trình Rút Gọn URL</title>
+    <style>
+        body {
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #3a3f4a;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        input[type="text"] {
+            width: 400px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+            #result a {
+                color: #61dafb;
+                font-weight: bold;
+            }
+
+        #error {
+            margin-top: 20px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Trình Rút Gọn URL (Đơn giản)</h1>
+
+        <form id="shorten-form">
+            <input type="text" id="url-input" placeholder="Dán link dài của bạn vào đây">
+            <button type="submit">Rút gọn</button>
+        </form>
+
+        <div id="result" style="display: none;">
+            <p>Link của bạn đã sẵn sàng:</p>
+            <a href="#" id="short-url-link" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+
+        <div id="error" style="display: none;">
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+    <script>
+        // Lấy các phần tử HTML
+        const form = document.getElementById('shorten-form');
+        const urlInput = document.getElementById('url-input');
+        const resultDiv = document.getElementById('result');
+        const shortUrlLink = document.getElementById('short-url-link');
+        const errorDiv = document.getElementById('error');
+        const errorMessage = document.getElementById('error-message');
+
+        // Địa chỉ API backend của bạn
+        const apiUrl = 'http://localhost:5145/api/shorten'; // (Nhớ kiểm tra lại cổng 5145)
+
+        // Khi người dùng bấm nút "Submit"
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Ngăn trang reload
+
+            // Ẩn kết quả cũ
+            resultDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+
+            const originalUrl = urlInput.value;
+
+            try {
+                // Gọi API backend (giống hệt code React)
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: originalUrl })
+                });
+
+                if (!response.ok) {
+                    // Xử lý lỗi (ví dụ: URL không hợp lệ)
+                    const errData = await response.json();
+                    throw new Error(errData.errors?.Url?.[0] || 'Lỗi: Không thể rút gọn link.');
+                }
+
+                // Xử-lý-thành-công
+                const data = await response.json();
+
+                // Hiển thị link rút gọn
+                shortUrlLink.href = data.shortUrl;
+                shortUrlLink.textContent = data.shortUrl;
+                resultDiv.style.display = 'block';
+
+            } catch (err) {
+                // Hiển thị lỗi
+                errorMessage.textContent = err.message;
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

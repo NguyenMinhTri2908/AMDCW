@@ -1,0 +1,15 @@
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.csproj.AssemblyReference.cache
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.AssemblyInfoInputs.cache
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.AssemblyInfo.cs
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.csproj.CoreCompileInputs.cache
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\bin\Debug\net8.0\UrlShortener.Application.deps.json
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\bin\Debug\net8.0\UrlShortener.Application.dll
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\bin\Debug\net8.0\UrlShortener.Application.pdb
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\bin\Debug\net8.0\UrlShortener.Domain.dll
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\bin\Debug\net8.0\UrlShortener.Domain.pdb
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShort.95A5A48A.Up2Date
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.dll
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\refint\UrlShortener.Application.dll
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.pdb
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\ref\UrlShortener.Application.dll
