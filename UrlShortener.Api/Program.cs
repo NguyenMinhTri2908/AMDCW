@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using UrlShortener.Application.Interfaces;
 using UrlShortener.Application.Services;
 using UrlShortener.Infrastructure.Persistence;
+using UrlShortener.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 // 4. Đăng ký Service (Dependency Injection)
 builder.Services.AddScoped<IUrlShorteningService, UrlShorteningService>();
+builder.Services.AddScoped<IQrCodeService, QrCodeService>();
 
 // 5. Các dịch vụ có sẵn của API
 builder.Services.AddControllers();

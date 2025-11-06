@@ -17,3 +17,4 @@ C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Infrastructure\obj
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Infrastructure\obj\Debug\net8.0\UrlShortener.Infrastructure.pdb
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Infrastructure\obj\Debug\net8.0\UrlShortener.Infrastructure.genruntimeconfig.cache
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Infrastructure\obj\Debug\net8.0\ref\UrlShortener.Infrastructure.dll
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Infrastructure\obj\Debug\net8.0\UrlShortener.Infrastructure.sourcelink.json

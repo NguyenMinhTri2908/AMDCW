@@ -31,6 +31,22 @@
     ]
   },
   {
+    "ContainingType": "UrlShortener.Api.Controllers.QrCodeController",
+    "Method": "Generate",
+    "RelativePath": "api/QrCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "url",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UrlShortener.Api.Controllers.ShortenerController",
     "Method": "ShortenUrl",
     "RelativePath": "api/shorten",

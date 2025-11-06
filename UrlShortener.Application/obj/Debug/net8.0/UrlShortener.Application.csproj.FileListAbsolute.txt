@@ -13,3 +13,4 @@ C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\De
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\refint\UrlShortener.Application.dll
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.pdb
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\ref\UrlShortener.Application.dll
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Application\obj\Debug\net8.0\UrlShortener.Application.sourcelink.json
