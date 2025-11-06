@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UrlShortener.Application.DTOs;
 using UrlShortener.Application.Interfaces;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace UrlShortener.Api.Controllers
 {
+    [EnableRateLimiting("ApiLimiter")]
     [ApiController]
     public class ShortenerController : ControllerBase
     {

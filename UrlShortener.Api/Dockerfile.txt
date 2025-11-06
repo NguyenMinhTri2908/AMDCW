@@ -1,0 +1,31 @@
+﻿# ----- GIAI ĐOẠN 1: BUILD -----
+# Dùng image .NET SDK (bản đầy đủ) để build dự án
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Sao chép các file .csproj và restore NuGet trước (tối ưu cache)
+COPY *.sln .
+COPY UrlShortener.Api/*.csproj UrlShortener.Api/
+COPY UrlShortener.Application/*.csproj UrlShortener.Application/
+COPY UrlShortener.Infrastructure/*.csproj UrlShortener.Infrastructure/
+COPY UrlShortener.Domain/*.csproj UrlShortener.Domain/
+RUN dotnet restore "UrlShortener.Api/UrlShortener.Api.csproj"
+
+# Sao chép toàn bộ source code còn lại
+COPY . .
+WORKDIR "/src/UrlShortener.Api"
+# Build và publish dự án ở chế độ Release
+RUN dotnet publish "UrlShortener.Api.csproj" -c Release -o /app/publish
+
+# ----- GIAI ĐOẠN 2: FINAL (ĐA TẦNG - ĂN ĐIỂM MERIT) -----
+# Dùng image ASP.NET (siêu nhẹ) để chạy
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+# Mở cổng 8080. (Render.com (PaaS) thường dùng cổng này)
+ENV PORT=8080
+ENV ASPNETCORE_URLS=http://*:8080
+
+# Lệnh để chạy API khi container khởi động
+ENTRYPOINT ["dotnet", "UrlShortener.Api.dll"]

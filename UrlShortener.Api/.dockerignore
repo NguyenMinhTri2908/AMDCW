@@ -1,0 +1,4 @@
+﻿# Bỏ qua các thư mục build tạm thời của Visual Studio
+**/bin/
+**/obj/
+.vs/

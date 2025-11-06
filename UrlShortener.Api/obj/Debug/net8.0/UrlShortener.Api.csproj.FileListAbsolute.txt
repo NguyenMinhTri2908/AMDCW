@@ -182,3 +182,4 @@ C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Api\obj\Debug\net8
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Api\obj\Debug\net8.0\UrlShortener.Api.pdb
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Api\obj\Debug\net8.0\UrlShortener.Api.genruntimeconfig.cache
 C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Api\obj\Debug\net8.0\ref\UrlShortener.Api.dll
+C:\Users\nguyenminhtri\source\repos\UrlShortener\UrlShortener.Api\obj\Debug\net8.0\UrlShortener.Api.sourcelink.json
