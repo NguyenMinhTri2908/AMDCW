@@ -51,6 +51,14 @@
             color: #ff6b6b;
             font-weight: bold;
         }
+
+        /* CSS MỚI: Thêm style cho ảnh QR */
+        #qr-code-image {
+            margin-top: 15px;
+            background-color: white; /* Thêm nền trắng để QR dễ quét */
+            padding: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -66,6 +74,10 @@
         <div id="result" style="display: none;">
             <p>Link của bạn đã sẵn sàng:</p>
             <a href="#" id="short-url-link" target="_blank" rel="noopener noreferrer"></a>
+
+            <div>
+                <img id="qr-code-image" alt="QR Code" />
+            </div>
         </div>
 
         <div id="error" style="display: none;">
@@ -82,11 +94,14 @@
         const errorDiv = document.getElementById('error');
         const errorMessage = document.getElementById('error-message');
 
-        // Địa chỉ API backend của bạn
-        const apiUrl = 'http://localhost:5145/api/shorten'; // (Nhớ kiểm tra lại cổng 5145)
+        // THÊM MỚI: Lấy phần tử ảnh QR
+        const qrImage = document.getElementById('qr-code-image');
+
+        // Địa chỉ API backend (Giả sử vẫn là cổng 5145)
+        const baseApiUrl = 'http://localhost:5145';
 
         // Khi người dùng bấm nút "Submit"
-        form.addEventListener('submit', async function(event) {
+        form.addEventListener('submit', async function (event) {
             event.preventDefault(); // Ngăn trang reload
 
             // Ẩn kết quả cũ
@@ -96,25 +111,34 @@
             const originalUrl = urlInput.value;
 
             try {
-                // Gọi API backend 
-                const response = await fetch(apiUrl, {
+                // === BƯỚC 1: Gọi API tạo link ngắn ===
+                const shortenResponse = await fetch(`${baseApiUrl}/api/shorten`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ url: originalUrl })
                 });
 
-                if (!response.ok) {
-                    // Xử lý lỗi (ví dụ: URL không hợp lệ)
-                    const errData = await response.json();
+                if (!shortenResponse.ok) {
+                    const errData = await shortenResponse.json();
                     throw new Error(errData.errors?.Url?.[0] || 'Lỗi: Không thể rút gọn link.');
                 }
 
-                // Xử-lý-thành-công
-                const data = await response.json();
+                const data = await shortenResponse.json();
 
-                // Hiển thị link rút gọn
+                // === BƯỚC 2: Hiển thị link rút gọn ===
                 shortUrlLink.href = data.shortUrl;
                 shortUrlLink.textContent = data.shortUrl;
+
+                // === BƯỚC 3 (MỚI): Gọi API QR Code ===
+                // Chúng ta dùng data.shortUrl để làm tham số cho API QR Code
+                // URL của ảnh sẽ là: http://localhost:5145/api/QrCode?shortUrl=...
+                // EncodeURIComponent để xử lý các ký tự đặc biệt (nếu có)
+                const qrApiUrl = `${baseApiUrl}/api/qrcode?url=${encodeURIComponent(data.shortUrl)}`;
+
+                // Gán thẳng URL của API vào nguồn (src) của ảnh
+                qrImage.src = qrApiUrl;
+
+                // Hiển thị toàn bộ kết quả (link + ảnh QR) 
                 resultDiv.style.display = 'block';
 
             } catch (err) {

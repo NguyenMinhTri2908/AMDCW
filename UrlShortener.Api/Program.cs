@@ -32,7 +32,7 @@ builder.Services.AddScoped<IAppDbContext>(provider => provider.GetRequiredServic
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     // Đảm bảo IP 10.25.42.67 này vẫn là IP của máy Mac (Default Gateway) nhé!
-    options.Configuration = "10.25.42.67:6379";
+    options.Configuration = "10.25.41.217:6379";
 });
 
 // 4. Đăng ký Service (Dependency Injection)
